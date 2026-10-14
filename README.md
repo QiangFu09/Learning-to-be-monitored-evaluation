@@ -31,28 +31,28 @@ Task responses that fail the output-format parser, and unparseable verifier verd
 
 For instance $i$, let $p_{x,i}$ denote the empirical target-outcome rate in arm $x$, and define
 
-$$
+```math
 q_i = \frac{p_{1,i}-p_{0,i}}{p_{1,i}},
 \qquad
 z_i = \widehat{P}(Z=1\mid X=1,Y=1,i).
-$$
+```
 
 For positive $q_i$, the implementation computes the following plug-in lower and upper recall-bound estimates:
 
-$$
-L_i = \max\left\{0,\frac{z_i+q_i-1}{q_i}\right\},
+```math
+L_i = \max\left\lbrace 0,\frac{z_i+q_i-1}{q_i}\right\rbrace,
 \qquad
-U_i = \min\left\{1,\frac{z_i}{q_i}\right\}
+U_i = \min\left\lbrace 1,\frac{z_i}{q_i}\right\rbrace
 = \mathrm{TPR}_{mc,i}.
-$$
+```
 
 Intervention-arm specificity is $s_i=\widehat{P}(Z=0\mid X=1,Y=0,i)$. For a task's selected estimable-instance set $S_t$, the composite scores are
 
-$$
+```math
 C_{L,t} = \frac{1}{|S_t|}\sum_{i\in S_t} L_i s_i,
 \qquad
 C_{U,t} = \frac{1}{|S_t|}\sum_{i\in S_t} U_i s_i.
-$$
+```
 
 The primary score is $C_{U,t}$, corresponding to the mean of instance-level $\mathrm{TPR}_{mc}\times\mathrm{TNR}_{X=1}$ products. Task means of both components and the lower-bound composite are reported separately. The normalized effect $q_i$ is distinct from the raw difference $p_{1,i}-p_{0,i}$.
 
